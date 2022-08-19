@@ -17,6 +17,10 @@ function Heading() {
         <a href="https://www.instagram.com/direct/inbox/">
           <Mess />
         </a>
+        <img
+            src="https://via.placeholder.com/30"
+            alt="avatar"
+          />
       </div>
     </>
   );
