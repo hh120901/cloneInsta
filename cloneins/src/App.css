@@ -12,6 +12,9 @@ body{
 }
 
 .img__avatar{
+  width: 35px;
+  height: 35px;
+
   border-radius: 50%;
   margin: 2%;
   align-items: center;
@@ -24,5 +27,9 @@ body{
   margin-top: 2%;
 }
 
-
+@media screen and (max-width: 1000px) {
+  .post__right{
+    display: none;
+  }
+}
 
