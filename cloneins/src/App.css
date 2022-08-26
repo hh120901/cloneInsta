@@ -27,6 +27,11 @@ body{
   margin-top: 2%;
 }
 
+.modal{
+  display: none;
+}
+
+
 @media screen and (max-width: 1000px) {
   .post__right{
     display: none;

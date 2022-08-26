@@ -105,3 +105,15 @@
       padding-left: 13%;
     }
   }
+  @media screen and (max-width: 360px) {
+    .post__right {
+        display: none;
+        width: 0px;
+      }
+    
+    .post__left {
+      width: 100%;
+      padding-right: 22%;
+      padding-left: 13%;
+    }
+  }

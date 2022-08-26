@@ -1,0 +1,45 @@
+.btn__login{
+    width: 50px;
+    height: 30px;
+}
+.hi{
+    position: relative;
+    object-fit: contain;
+    width: 40%;
+    top: 20%;
+    left: 24%;
+
+    background-color: white;
+}
+.div__form{
+    width: 100%;
+    border: 3px solid rgb(11, 48, 69);
+    padding-bottom: 2%;
+}
+.login__title{
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+}
+.div__form input {
+    width: 95%;
+    height: 33px;
+
+}
+.form__group{
+    display: flex;
+    align-items: center;
+    margin: 3% 1%;
+}
+
+.form__group span{
+    width: 100px;
+}
+.div__form button{
+    position: relative;
+    bottom: 0%;
+    right: -79%;
+    width: 20%;
+    height: 30px;
+    background-color: rgb(119, 156, 226);
+}
