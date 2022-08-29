@@ -30,7 +30,6 @@ function App() {
       </div>
       <div className="container">
     <LoginBtn />
-
         <div className="post__left">
           {posts.map((post, index) => (
             <Post

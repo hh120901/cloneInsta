@@ -6,6 +6,9 @@
     align-items: center;
     background-color: white;
     object-fit: contain;
+    position: fixed;
+    top:0px;
+    z-index: 1;
   }
 
   .heading__homeIcon{
