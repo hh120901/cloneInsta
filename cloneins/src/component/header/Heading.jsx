@@ -1,6 +1,6 @@
 import React from "react";
 import './Heading.css'
-import { House, Mess  } from "./Icons";
+import { House, Mess  } from "../../Icons";
 
 
 function Heading() {

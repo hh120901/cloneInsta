@@ -1,5 +1,4 @@
 import React from "react";
-
 function MyProfile(){
     return (
       <>
@@ -10,7 +9,7 @@ function MyProfile(){
             className="img__avatar"
           />
           <div className="post__myprofile">
-            <h3>12.VanHau</h3>
+            <h3>12.vanhau</h3>
             <p>Nguyen Van Hau</p>
           </div>
           <div className="switchUser">

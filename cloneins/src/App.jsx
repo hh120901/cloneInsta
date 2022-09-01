@@ -1,12 +1,12 @@
 import "./App.css";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Post from "./Post";
-import RightPost from "./RightPost";
-import Heading from "./Heading";
-import { db } from './firebase.js';
+import Post from "./component/body/Post";
+import RightPost from "./component/body/RightPost";
+import Heading from "./component/header/Heading";
+import { db } from './firebase/firebase.js';
 import { getDocs, collection } from "firebase/firestore";
-import LoginBtn from "./LoginBtn";
+import LoginBtn from "./component/login/LoginBtn";
 
 //FireBase: firebase login, firebase init,firebase deploy
 //𝓘𝓷𝓼𝓽𝓪𝓰𝓻𝓪𝓶
@@ -23,13 +23,18 @@ function App() {
        });
      })();
   },[])
+  const [userLogin, setUserLogin] = useState('login')
+  function appCallBack (username){
+    setUserLogin(username);
+  }
   return (
+    
     <div className="App">
       <div className="heading">
         <Heading />
       </div>
       <div className="container">
-    <LoginBtn />
+    <LoginBtn parentCallback={appCallBack}/>
         <div className="post__left">
           {posts.map((post, index) => (
             <Post
@@ -41,7 +46,7 @@ function App() {
           ))}
         </div>
         <div className="post__right">
-          <RightPost />
+          <RightPost username={userLogin}/>
         </div>
       </div>
     </div>
