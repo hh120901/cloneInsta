@@ -11,6 +11,8 @@ function LoginBtn(userLogin) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [checkLogin, setCheckLogin] = useState(false);
+
   function openLoginModal() {
     setMOpen(true);
   }
@@ -54,6 +56,7 @@ function LoginBtn(userLogin) {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Login Success!");
+        setCheckLogin(true);
         console.log(user.displayName);
         // Update Username when login
           if(user.displayName === ''){
@@ -84,6 +87,7 @@ function LoginBtn(userLogin) {
   const logOut =()=>{
     signOut(auth)
     .then(() => {
+      setCheckLogin(false)
       userLogin.parentCallback('Login');
       console.log(" Sign Out Successed !");
       setUsername('');
@@ -137,9 +141,12 @@ function LoginBtn(userLogin) {
 
               <hr />
               <div className="form__footer">
-                <button className="submit__btn" type="reset" onClick={logOut}>
+                {
+                  checkLogin ? <button className="submit__btn" type="reset" onClick={logOut}>
                     Sign Out
-                </button>
+                  </button> : null
+                }
+              
                 <button className="submit__btn" type="submit" onClick={login}>
                     Sign In
                 </button>
