@@ -23,7 +23,8 @@ function App() {
        });
      })();
   },[])
-  const [userLogin, setUserLogin] = useState('login')
+  const [userLogin, setUserLogin] = useState('Login')
+
   function appCallBack (username){
     setUserLogin(username);
   }

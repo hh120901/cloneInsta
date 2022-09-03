@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import "./Login.css";
 import { auth } from '../../firebase/firebase.js';
-import { getAuth, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signOut, updateProfile, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
 
 Modal.setAppElement("#root");
@@ -80,6 +80,18 @@ function LoginBtn(userLogin) {
 
 
   }
+  //sign out: 
+  const logOut =()=>{
+    signOut(auth)
+    .then(() => {
+      userLogin.parentCallback('Login');
+      console.log(" Sign Out Successed !");
+      setUsername('');
+    }).catch((error) => {
+      console.log(error.Message)
+    });
+  }
+    
   
   return (
       <div className="test__modal">
@@ -125,11 +137,14 @@ function LoginBtn(userLogin) {
 
               <hr />
               <div className="form__footer">
+                <button className="submit__btn" type="reset" onClick={logOut}>
+                    Sign Out
+                </button>
                 <button className="submit__btn" type="submit" onClick={login}>
-                    Login
+                    Sign In
                 </button>
                 <button className="submit__btn" type="submit" onClick={handleSubmit}>
-                  SignIn
+                  Sign Up
                 </button>
                 <button className="close__btn" onClick={closeLoginModal}>
                   Close
