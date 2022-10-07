@@ -12,7 +12,6 @@ function LoginBtn(userLogin) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [checkLogin, setCheckLogin] = useState(false);
-
   function openLoginModal() {
     setMOpen(true);
   }
@@ -26,24 +25,27 @@ function LoginBtn(userLogin) {
     setPassword('');
     setMOpen(false);
   }
-  var handleSubmit = (e)=>{
+  var handleSignUp = (e)=>{
     console.log("Submited")
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        if(user.displayName ===''){
+        // if(user.displayName ===''){
           updateProfile(auth.currentUser, {
             displayName: username
           }).then(() => {
-            console.log("updateSuccess",username);
+            console.log("Create username: ",username);
           }).catch((error) => {
-            // An error occurred
-            // ...
+            console.log(error.message)
           });
-        }
-        console.log("Signin Success!!!");
+        // }
+        console.log("Sign Up Success!!!");
         return user;
+      })
+      .then(()=>{
+        window.alert("Account Created!");
+
       })
       
       .catch((error) => {
@@ -98,70 +100,83 @@ function LoginBtn(userLogin) {
     
   
   return (
-      <div className="test__modal">
-        <button className="btn__login" onClick={openLoginModal}>
-          {username ? username: "Login"}
-        </button>
-        <div className="MyModal">
-          <Modal
-            className="hi"
-            isOpen={mOpen}
-            onRequestClose={closeLoginModal}
-            contentLabel="Example Modal"
-          >
-            <div className="div__form">
-              <h2 className="login__title">DREAMGRAM</h2>
-              <hr />
-              <div className="form__body">
-                <form className="form__login">
-                  <div className="form__group">
-                    <span>Username:</span>
-                    <input placeholder="Username" 
-                      value={username}
-                      onChange={e=>setUsername(e.target.value)}
-                    />
-                  </div>
-                  <div className="form__group">
-                    <span>Gmail:</span>
-                    <input 
-                      placeholder="Gmail" 
-                      value={email}
-                      onChange={e=>setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="form__group">
-                    <span>Password:</span>
-                    <input placeholder="password" 
-                      value={password}
-                      onChange={e=>setPassword(e.target.value)}
-                    />
-                  </div>
-                </form>
-              </div>
-
-              <hr />
-              <div className="form__footer">
-                {
-                  checkLogin ? <button className="submit__btn" type="reset" onClick={logOut}>
-                    Sign Out
-                  </button> : null
-                }
+    <div className="test__modal">
+      <button className="btn__login" onClick={openLoginModal}>
+        {username ? username : "Login"}
+      </button>
+      <div className="MyModal">
+        <Modal
+          className="hi"
+          isOpen={mOpen}
+          onRequestClose={closeLoginModal}
+          contentLabel="Example Modal"
+        >
+          <div className="div__form">
+            <h2 className="login__title">DREAMGRAM</h2>
+            <hr />
+            <div className="form__body">
+              <form className="form__login">
               
-                <button className="submit__btn" type="submit" onClick={login}>
-                    Sign In
-                </button>
-                <button className="submit__btn" type="submit" onClick={handleSubmit}>
-                  Sign Up
-                </button>
-                <button className="close__btn" onClick={closeLoginModal}>
-                  Close
-                </button>
+                <div className="form__group">
+                  <span>Username:</span>
+                  <input
+                    placeholder="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+              
                 
-              </div>
+                <div className="form__group">
+                  <span>Gmail:</span>
+                  <input
+                    placeholder="Gmail"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form__group">
+                  <span>Password:</span>
+                  <input
+                    placeholder="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </form>
             </div>
-          </Modal>
-        </div>
+
+            <hr />
+            <div className="form__footer">
+              {checkLogin ? (
+                <button className="submit__btn" type="reset" onClick={logOut}>
+                  Sign Out
+                </button>
+              ) : null}
+              {!checkLogin ? (
+                <>
+                  <button className="submit__btn" type="submit" onClick={login}>
+                    Sign In
+                  </button>
+                  <button
+                    className="submit__btn"
+                    type="submit"
+                    onClick={handleSignUp}
+                  >
+                    Sign Up
+                  </button>
+                  <button className="close__btn" onClick={closeLoginModal}>
+                    Close
+                  </button>
+                </>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        </Modal>
       </div>
+    </div>
   );
 }
 

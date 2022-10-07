@@ -1,10 +1,11 @@
 .btn__login{
+    z-index: 1;
     min-width: 100px;
     width: auto;
     height: 30px;
     object-fit: contain;
     position: fixed;
-    top:62px;
+    top:1rem;
     transition-delay: 200ms;
 }
 .hi{

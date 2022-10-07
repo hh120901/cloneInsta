@@ -1,18 +1,20 @@
 import React from "react";
 
-function SuggestUsers() {
+function SuggestUsers(fQU,fImg,fFullname) {
   return (
-    <div className="suggestUsers">
+    <>
+      <div className="suggestUsers">
       <img
-        src="https://via.placeholder.com/35"
+        src={fImg}
         alt="avatar"
         className="img__avatar"
       />
       <div className="suggest__info">
-        <h4>User gợi ý 1</h4>
-        <p>số người theo dõi</p>
+        <h4>{fFullname}</h4>
+        <p>{fQU}</p>
       </div>
     </div>
+    </>
   );
 }
 

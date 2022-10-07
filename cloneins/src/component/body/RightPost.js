@@ -1,7 +1,10 @@
-import React  from "react";
+import React from "react";
 import FollowUser from "./FollowUser";
+
 import './Post.css'
 function RightPost({username}) {
+
+
   return (
     <>
       <div className="myProfile">
@@ -20,7 +23,7 @@ function RightPost({username}) {
             </div>
       </div>
       <div className="followUser">
-        <FollowUser />
+        <FollowUser></FollowUser>
       </div>
     </>
   );
